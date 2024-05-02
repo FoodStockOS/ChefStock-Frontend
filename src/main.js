@@ -3,6 +3,8 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import './styles.css'
+import router from './router';
+import { createPinia } from "pinia";
 
 import i18n from "./i18n.js"
 
@@ -58,7 +60,10 @@ import 'primeicons/primeicons.css';
 //PrimeFlex Companion
 import "primeflex/primeflex.css";
 
-createApp(App)
+const pinia = createPinia()
+
+
+const app = createApp(App)
     .use(PrimeVue, {ripple:true})
     .component("pv-menu", Menu)
     .component("pv-split-button", SplitButton)
@@ -99,4 +104,6 @@ createApp(App)
     .component("pv-cascade", CascadeSelect)
     .component("pv-confirm-dialog", ConfirmDialog)
     .use(i18n)
+    .use(router)
+    .use(vuetify)
     .mount('#app')
