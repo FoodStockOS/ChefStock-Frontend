@@ -9,18 +9,18 @@
           <pv-img src="https://i.postimg.cc/mrsLXChs/e-Rent-Car-removebg-preview.png" height="50" class=""/>
         </div>
         <div>
-          <form @submit.prevent="handleSubmit(!v$.$invalid)">
+          <form @submit.prevent="handleSubmit(!v$.$error)">
             <div class="p-inputgroup mb-3">
                   <span class="p-inputgroup-addon ">
                     <i class="pi pi-user"></i>
                   </span>
-              <pv-input-text id="loginEmail" v-model="email" placeholder="Email" :class="{ 'p-invalid': v$.email.$invalid && submitted }" v-tooltip.right="'Put your email'" />
+              <pv-input-text id="loginEmail" v-model="email" placeholder="Email" :class="{ 'p-invalid': v$.email.$error && submitted }" v-tooltip.right="'Put your email'" />
             </div>
             <div class="p-inputgroup">
                   <span class="p-inputgroup-addon ">
                     <i class="pi pi-key"></i>
                   </span>
-              <pv-password id="loginPassword" v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" :feedback="false" toggleMask placeholder="Password" v-tooltip.right="'Put your password'"/>
+              <pv-password id="loginPassword" v-model="password" :class="{ 'p-invalid': v$.password.$error && submitted }" :feedback="false" toggleMask placeholder="Password" v-tooltip.right="'Put your password'"/>
             </div>
             <div class = "flex  justify-content-between mt-3">
               <pv-button icon="pi pi-car" type="submit" class="p-button  "  label="Login"/>
@@ -42,14 +42,16 @@
 </template>
 
 <script>
-import { userStore } from "@/user/login/stores/user-store";
 import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-import usersApiService from "@/user/subscription/services/users-api.service";
+import { userStore } from "@/user/login/stores/user-store.js";
 
 export default {
   name: "login.component",
-  setup: () => ({ v$: useVuelidate() }),
+  setup() {
+    const v$ = useVuelidate();
+    return { v$ };
+  },
   userStore: null,
   data() {
     return {
@@ -70,27 +72,24 @@ export default {
     };
   },
   methods: {
-    handleSubmit(isFormValid) {
-      const us = userStore();
+    handleSubmit() {
       this.submitted = true;
-      if (isFormValid) {
+      if (!this.v$.$invalid) {
         this.$toast.add({
           severity: "success",
           summary: "Login success",
-          detail: "Welcome to eRentCar",
+          detail: "Welcome to FoodStockOS",
           life: 3000,
         });
-        usersApiService
+        userStore()
             .getEmailAndPassword(this.email, this.password)
             .then((response) => {
-
-              us.setUser(response.data);
+              userStore().setUser(response.data);
               console.log("DATA: ", response.data);
-              if(response.data.typeOfUser === "Arrendador"){
-                this.$router.push("/mycars");
-              }
-              else{
-                this.$router.push("/rents" );
+              if (response.data.typeOfUser === "Gerente") {
+                this.$router.push("/");
+              } else {
+                this.$router.push("/rents");
               }
             })
             .catch((e) => {
@@ -104,7 +103,7 @@ export default {
           life: 3000,
         });
       }
-    }
+    },
   },
 };
 </script>
