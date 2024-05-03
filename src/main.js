@@ -61,11 +61,13 @@ import productsCreateFormComponent from "@/users/products/components/products-cr
 import LoginPage from "@/users/login/pages/LoginPage.vue";
 import SignupPage from "@/users/login/pages/SignupPage.vue";
 import HomePage from "@/users/homepage/pages/HomePage.vue";
+import productsUpdateComponent from "@/users/products/components/products-update.component.vue";
 const routes = [
     { path: '/homepage', component: HomePage},
     { path: '/', component: HomePage },
     { path: '/products', component: ProductsPage},
     { path: '/createproducts', component: productsCreateFormComponent},
+    { path: '/updateproducts/:id', name: 'ProductUpdate', component: productsUpdateComponent},
     { path: '/login', component: LoginPage},
     { path: '/signup', component: SignupPage},
 ]
