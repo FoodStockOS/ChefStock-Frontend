@@ -48,5 +48,15 @@
       "description": "Tableta de chocolate negro con un 70% de cacao puro. Intenso y delicioso, perfecto para los amantes del chocolate negro.",
       "image": "https://wongfood.vtexassets.com/arquivos/ids/445086-800-auto?v=637590270174800000&width=800&height=auto&aspect=true"
     }
+  ],
+  "users": [
+    {
+      "username": "usuario1",
+      "password": "123123"
+    },
+    {
+      "username": "usuario2",
+      "password": "123123"
+    }
   ]
 }

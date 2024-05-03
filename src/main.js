@@ -58,8 +58,12 @@ import "primeflex/primeflex.css";
 
 import ProductsPage from "@/users/products/pages/ProductsPage.vue";
 import productsCreateFormComponent from "@/users/products/components/products-create-form.component.vue";
+import LoginPage from "@/users/login/pages/LoginPage.vue";
+import SignupPage from "@/users/login/pages/SignupPage.vue";
 const routes = [
     { path: '/products', component: ProductsPage},
+    { path: '/login', component: LoginPage},
+    { path: '/signup', component: SignupPage},
     { path: '/createproducts', component: productsCreateFormComponent}
 ]
 
