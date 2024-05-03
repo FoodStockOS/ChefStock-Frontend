@@ -27,19 +27,8 @@ export default {
         email: this.email,
         password: this.password,
       });
-      if (response.data.length > 0) {
-        this.$toast.add({
-          severity: 'success',
-          summary: 'Registro exitoso',
-          life: 3000,
-        });
-      } else {
-        this.$toast.add({
-          severity: 'error',
-          summary: 'Error de registro',
-          life: 3000,
-        });
-      }
+      console.log(response.data);
+      this.$router.push('/login');
     },
   },
 };

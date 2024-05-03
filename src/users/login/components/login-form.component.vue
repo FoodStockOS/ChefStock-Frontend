@@ -20,22 +20,14 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const response = await axios.post('http://localhost:3000/users', {
+      const response = await axios.get(`http://localhost:3000/users?username=${this.username}&password=${this.password}`, {
         username: this.username,
         password: this.password,
       });
+      console.log(response.data.length);
       if (response.data.length > 0) {
-        this.$toast.add({
-          severity: 'success',
-          summary: 'Se ha iniciado sesión correctamente',
-          life: 3000,
-        });
+        this.$router.push('/homepage');
       } else {
-        this.$toast.add({
-          severity: 'error',
-          summary: 'Error de inicio de sesión',
-          life: 3000,
-        });
       }
     },
   },
