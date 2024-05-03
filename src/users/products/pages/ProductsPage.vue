@@ -32,16 +32,22 @@ export default {
 </script>
 
 <template>
-  <div class="button-container">
-    <router-link to="/createproducts">
-      <pv-button class="add-button">Add Products</pv-button>
-    </router-link>
+  <div class="productspage-container">
+    <div class="button-container">
+      <router-link to="/createproducts">
+        <pv-button class="add-button">Agregar Productos</pv-button>
+      </router-link>
+    </div>
+    <product-card-list :products="products"></product-card-list>
   </div>
-  <product-card-list :products="products"></product-card-list>
 </template>
 
 <style>
+.productspage-container{
+  background: #3a3a39;
+}
 .button-container {
+  padding-top:20px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
