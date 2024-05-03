@@ -41,13 +41,14 @@ export default {
 <style>
 
 md-card {
+  color: black;
   width: 320px;
   margin: 30px;
   display: inline-block;
   vertical-align: top;
   text-align: center;
   border: 3px solid;
-  background: #ADD8E6;
+  background: #e55e35;
 }
 
 </style>

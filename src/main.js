@@ -62,11 +62,12 @@ import LoginPage from "@/users/login/pages/LoginPage.vue";
 import SignupPage from "@/users/login/pages/SignupPage.vue";
 import HomePage from "@/users/homepage/pages/HomePage.vue";
 const routes = [
-    { path: '/products', component: ProductsPage},
     { path: '/homepage', component: HomePage},
+    { path: '/', component: HomePage },
+    { path: '/products', component: ProductsPage},
+    { path: '/createproducts', component: productsCreateFormComponent},
     { path: '/login', component: LoginPage},
     { path: '/signup', component: SignupPage},
-    { path: '/createproducts', component: productsCreateFormComponent}
 ]
 
 const router = createRouter({

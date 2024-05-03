@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Aceite de Oliva Extra Virgen",
       "quantity": 200,
       "category": "Aceites y Vinagres",
@@ -9,7 +9,7 @@
       "image": "https://plazavea.vteximg.com.br/arquivos/ids/553594-450-450/20046703.jpg?v=637426557178300000"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Arroz Integral Orgánico",
       "quantity": 100,
       "category": "Granos y Cereales",
@@ -17,7 +17,7 @@
       "image": "https://vizananutrition.com/wp-content/uploads/2020/04/Arroz-Integral.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Salsa de Tomate Casera",
       "quantity": 50,
       "category": "Salsas y Condimentos",
@@ -25,7 +25,7 @@
       "image": "https://www.mercadocarozzi.cl/media/catalog/product/cache/10af09c11087c7047da4d5541bb15ed5/7/8/7802575353054.png"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Chocolate Negro 70% Cacao",
       "quantity": 80,
       "category": "Dulces y Chocolate",
@@ -33,7 +33,7 @@
       "image": "https://wongfood.vtexassets.com/arquivos/ids/445086-800-auto?v=637590270174800000&width=800&height=auto&aspect=true"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Chocolate Negro 70% Cacao",
       "quantity": 80,
       "category": "Dulces y Chocolate",
@@ -41,7 +41,7 @@
       "image": "https://wongfood.vtexassets.com/arquivos/ids/445086-800-auto?v=637590270174800000&width=800&height=auto&aspect=true"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Chocolate Negro 70% Cacao",
       "quantity": 80,
       "category": "Dulces y Chocolate",
@@ -52,11 +52,13 @@
   "users": [
     {
       "username": "usuario1",
-      "password": "123123"
+      "password": "123123",
+      "id": "81de"
     },
     {
       "username": "usuario2",
-      "password": "123123"
+      "password": "123123",
+      "id": "3663"
     }
   ]
 }

@@ -51,9 +51,9 @@ export default {
         <label for="description">Agregar una descripción</label>
         <textarea id="description" v-model="product.description" required></textarea>
         <div class="button-container">
-          <pv-button type="submit" class="save-button">Save</pv-button>
+          <pv-button type="submit" class="save-button">Guardar</pv-button>
           <router-link to="/products">
-            <pv-button class="cancel-button">Cancel</pv-button>
+            <pv-button class="cancel-button">Cancelar</pv-button>
           </router-link>
         </div>
       </div>
@@ -136,16 +136,16 @@ textarea {
 }
 @media (max-width: 768px) {
   .product-form {
-    grid-template-columns: 2fr; /* Cambia a una sola columna en dispositivos móviles */
+    grid-template-columns: 2fr;
   }
 
   .left-column, .right-column {
-    grid-column: auto; /* Reinicia el valor de grid-column */
-    padding: 0; /* Elimina el relleno */
+    grid-column: auto;
+    padding: 0;
   }
 
   .right-column {
-    margin-top: 20px; /* Añade un margen superior para separar los elementos */
+    margin-top: 20px;
   }
 }
 </style>

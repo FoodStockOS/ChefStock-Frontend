@@ -20,8 +20,8 @@ export default {
       <p><strong>Categoría:</strong> {{ product.category }}</p>
       <p><strong>Descripción:</strong> {{ product.description }}</p>
       <div class="buttons-container">
-        <pv-button class="edit-button">Edit</pv-button>
-        <pv-button class="delete-button">Delete</pv-button>
+        <pv-button class="edit-button">Editar</pv-button>
+        <pv-button class="delete-button">Eliminar</pv-button>
       </div>
     </template>
   </pv-card>

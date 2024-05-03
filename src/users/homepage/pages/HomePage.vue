@@ -20,7 +20,7 @@ export default {
   &nbsp;
   <div class="productos">
     &nbsp;
-    <h3>Productos</h3>
+    <h2>Productos</h2>
     <home-card-component />
   </div>
 
@@ -32,6 +32,9 @@ export default {
 }
 .productos{
   text-align: center;
-  background: gray;
+  background: #3a3a39;
+}
+.productos h2{
+  color:#fff;
 }
 </style>
