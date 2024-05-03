@@ -39,7 +39,6 @@ export default {
     };
   }
 };
-
 </script>
 
 <template>
@@ -62,7 +61,7 @@ export default {
         <input type="file" id="image" @change="handleFileUpload" required>
         <div class="button-container">
           <pv-button type="submit" class="save-button">Guardar</pv-button>
-          <router-link to="/products">
+          <router-link to="/products" style="text-decoration:none">
             <pv-button class="cancel-button">Cancelar</pv-button>
           </router-link>
         </div>
