@@ -1,9 +1,11 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <pv-input-text v-model="username" placeholder="Username" />
-    <pv-input-text type="password" v-model="password" placeholder="Password" />
-    <pv-button type="submit">Log In</pv-button>
-  </form>
+  <div class="form-container">
+    <form @submit.prevent="handleSubmit">
+      <pv-input-text v-model="username" placeholder="Username" />
+      <pv-input-text type="password" v-model="password" placeholder="Password" />
+      <pv-button type="submit">Log In</pv-button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -17,26 +19,38 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      axios.get('http://localhost:3000/users', {
-        params: {
-          username: this.username,
-          password: this.password,
-        },
-      })
-          .then((response) => {
-            if (response.data.length > 0) {
-              // El usuario existe y la contraseña es correcta
-              console.log('Inicio de sesión exitoso');
-            } else {
-              // El usuario no existe o la contraseña es incorrecta
-              console.log('Error de inicio de sesión');
-            }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+    async handleSubmit() {
+      const response = await axios.post('http://localhost:3000/users', {
+        username: this.username,
+        password: this.password,
+      });
+      if (response.data.length > 0) {
+        this.$toast.add({
+          severity: 'success',
+          summary: 'Se ha iniciado sesión correctamente',
+          life: 3000,
+        });
+      } else {
+        this.$toast.add({
+          severity: 'error',
+          summary: 'Error de inicio de sesión',
+          life: 3000,
+        });
+      }
     },
   },
 };
 </script>
+
+<style scoped>
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  padding: 20px;
+  margin: 0 auto;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+</style>

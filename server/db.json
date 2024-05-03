@@ -52,11 +52,11 @@
   "users": [
     {
       "username": "usuario1",
-      "password": "contraseña1"
+      "password": "123123"
     },
     {
       "username": "usuario2",
-      "password": "contraseña2"
+      "password": "123123"
     }
   ]
 }
