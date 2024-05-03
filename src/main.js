@@ -1,6 +1,8 @@
+import './assets/main.css'
+
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
+import './styles.css'
 
 import i18n from "./i18n.js"
 
@@ -56,18 +58,6 @@ import 'primeicons/primeicons.css';
 //PrimeFlex Companion
 import "primeflex/primeflex.css";
 
-import ProductsPage from "@/users/products/pages/ProductsPage.vue";
-import productsCreateFormComponent from "@/users/products/components/products-create-form.component.vue";
-const routes = [
-    { path: '/products', component: ProductsPage},
-    { path: '/createproducts', component: productsCreateFormComponent}
-]
-
-const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
-
 createApp(App)
     .use(PrimeVue, {ripple:true})
     .component("pv-menu", Menu)
@@ -108,6 +98,5 @@ createApp(App)
     .component("pv-inplace", Inplace)
     .component("pv-cascade", CascadeSelect)
     .component("pv-confirm-dialog", ConfirmDialog)
-    .use(router)
     .use(i18n)
     .mount('#app')
