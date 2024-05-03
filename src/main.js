@@ -60,8 +60,10 @@ import ProductsPage from "@/users/products/pages/ProductsPage.vue";
 import productsCreateFormComponent from "@/users/products/components/products-create-form.component.vue";
 import LoginPage from "@/users/login/pages/LoginPage.vue";
 import SignupPage from "@/users/login/pages/SignupPage.vue";
+import HomePage from "@/users/homepage/pages/HomePage.vue";
 const routes = [
     { path: '/products', component: ProductsPage},
+    { path: '/homepage', component: HomePage},
     { path: '/login', component: LoginPage},
     { path: '/signup', component: SignupPage},
     { path: '/createproducts', component: productsCreateFormComponent}

@@ -2,6 +2,9 @@
   <pv-toolbar class="c-toolbar">
     <template #start>
       <h1>ChefStock</h1>
+      &nbsp;
+      &nbsp;
+      <router-link to="/homepage"><pv-button class="text-button" >Home</pv-button></router-link>
     </template>
     <template #center>
       <router-link to="/products"><pv-button class="text-button" >Products</pv-button></router-link>
