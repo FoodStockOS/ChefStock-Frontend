@@ -1,5 +1,5 @@
 <script>
-import{ Products } from "@/users/products/models/products.entity.js";
+import {Products} from "@/users/products/models/products.entity.js";
 import {ProductsApiService} from "@/users/products/services/products-api.service.js";
 
 export default {
@@ -7,12 +7,11 @@ export default {
   components: {},
   props: {
     product: {
-      type: Products,
+      type: Object,
       required: true
     },
   },
   methods: {
-
     deleteProduct() {
       const productService = new ProductsApiService();
       productService.deleteProduct(this.product.id)
