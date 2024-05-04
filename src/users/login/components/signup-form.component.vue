@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const response = await axios.post('http://localhost:3000/users', {
+      const response = await axios.post('https://my-json-server.typicode.com/drkdevv1/json-server-Chefstock/users', {
         username: this.username,
         email: this.email,
         password: this.password,

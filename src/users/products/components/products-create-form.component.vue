@@ -22,7 +22,7 @@ export default {
       reader.readAsDataURL(file);
     };
     const submitForm = () => {
-      axios.post('http://localhost:3000/products', product.value)
+      axios.post('https://my-json-server.typicode.com/drkdevv1/json-server-Chefstock/products', product.value)
           .then(response => {
             console.log('Producto creado:', response.data);
             router.push('/products');

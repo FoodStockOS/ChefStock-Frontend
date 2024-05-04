@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create axios instance with predefined properties
 const http = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://my-json-server.typicode.com/drkdevv1/json-server-Chefstock',
 });
 
 // Define country API service
