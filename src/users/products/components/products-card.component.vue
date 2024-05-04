@@ -1,7 +1,6 @@
 <script>
 import {Products} from "@/users/products/models/products.entity.js";
 import {ProductsApiService} from "@/users/products/services/products-api.service.js";
-
 export default {
   name:"ProductCard",
   components: {},
