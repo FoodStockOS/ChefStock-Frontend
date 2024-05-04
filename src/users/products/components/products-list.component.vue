@@ -4,7 +4,7 @@ export default {
   name: "ProductCardList",
   components:{ProductCard},
   props: {
-    products: Object,
+    products: Array,
   },
   methods: {
     handleProductDeleted(productId) {
