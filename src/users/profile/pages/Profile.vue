@@ -6,9 +6,11 @@
 
 <script>
 import Profile from '../components/profile.component.vue';
+import UserProfile from "@/users/profile/components/profile.component.vue";
 
 export default {
   components: {
+    UserProfile,
     Profile
   }
 }

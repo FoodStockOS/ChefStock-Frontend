@@ -16,10 +16,13 @@ export default {
       productsApi: new ProductsApiService(),
     };
   },
-  created() {
-    this.getProductCard();
-  },
   methods:{
+    handleProductDeleted(productId) {
+      const index = this.products.findIndex(product => product.id === productId);
+      if (index !== -1) {
+        this.products.splice(index, 1);
+      }
+    },
     getProductCard(){
       this.productsApi.getCardInfo().then((response)=>{
         this.products=response.data;
@@ -27,6 +30,9 @@ export default {
         this.errors.push(error);
       });
     },
+  },
+  created() {
+    this.getProductCard();
   },
 };
 </script>
@@ -38,7 +44,7 @@ export default {
         <pv-button class="add-button">Agregar Productos</pv-button>
       </router-link>
     </div>
-    <product-card-list :products="products"></product-card-list>
+    <product-card-list :products="products" @productDeleted="handleProductDeleted"></product-card-list>
   </div>
 </template>
 
