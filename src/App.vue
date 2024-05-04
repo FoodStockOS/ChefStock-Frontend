@@ -2,8 +2,6 @@
   <pv-toolbar class="c-toolbar">
     <template #start>
       <h1>ChefStock</h1>
-      &nbsp;
-      &nbsp;
       <router-link to="/homepage"><pv-button class="text-button" >Home</pv-button></router-link>
     </template>
     <template #center>
@@ -12,6 +10,8 @@
     <template #end>
       <router-link to="/login"><pv-button class="text-button login-button" >Log In</pv-button></router-link>
       <router-link to="/signup"><pv-button class="text-button signup-button" >Sign Up</pv-button></router-link>
+      <router-link to="/profile"><pv-button class="text-button profile-button" >Profile</pv-button></router-link>
+
     </template>
   </pv-toolbar>
   <div class="content">
@@ -47,6 +47,10 @@ export default {
   transition: background-color 0.3s ease;
 }
 .login-button {
+  background-color: #708090;
+  color: #FFF;
+}
+.profile-button {
   background-color: #708090;
   color: #FFF;
 }
