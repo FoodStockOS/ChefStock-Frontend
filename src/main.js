@@ -62,6 +62,8 @@ import LoginPage from "@/users/login/pages/LoginPage.vue";
 import SignupPage from "@/users/login/pages/SignupPage.vue";
 import HomePage from "@/users/homepage/pages/HomePage.vue";
 import productsUpdateComponent from "@/users/products/components/products-update.component.vue";
+import profileComponent from "@/users/profile/components/profile.component.vue";
+import ProfileComponent from "@/users/profile/components/profile.component.vue";
 
 const routes = [
     { path: '/homepage', component: HomePage},
@@ -71,6 +73,7 @@ const routes = [
     { path: '/updateproducts/:id', name: 'ProductUpdate', component: productsUpdateComponent},
     { path: '/login', component: LoginPage},
     { path: '/signup', component: SignupPage},
+    { path: '/profile', component: ProfileComponent}
 ]
 
 const router = createRouter({
