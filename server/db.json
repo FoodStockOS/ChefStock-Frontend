@@ -43,6 +43,30 @@
       "username": "usuario2",
       "password": "123123",
       "id": "3663"
+    },
+    {
+      "id": "bf83",
+      "username": "rodr",
+      "email": "rodr",
+      "password": "rodr"
+    },
+    {
+      "id": "c16e",
+      "username": "rodr",
+      "email": "rodr",
+      "password": "rodr"
+    },
+    {
+      "id": "f3ee",
+      "username": "rodro",
+      "email": "rodro",
+      "password": "rodro"
+    },
+    {
+      "id": "095c",
+      "username": "rodri",
+      "email": "rodri",
+      "password": "rodri"
     }
   ]
 }
