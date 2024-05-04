@@ -62,7 +62,7 @@ export default {
         <input type="file" id="image" @change="handleFileUpload" required>
         <div class="button-container">
           <pv-button type="submit" class="save-button">Guardar</pv-button>
-          <router-link to="/products">
+          <router-link to="/products" class="link-no-decoration">
             <pv-button class="cancel-button">Cancelar</pv-button>
           </router-link>
         </div>
@@ -78,13 +78,19 @@ export default {
   padding: 20px;
   margin: 0 auto;
 }
+#description {
+  resize: none;
+}
+.link-no-decoration {
+  text-decoration: none;
+}
 
 .product-form {
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 20px;
   border-radius: 20px;
-  background-color: #f9f9f9;
+  background-color: #ffff;
   padding: 20px;
 }
 
