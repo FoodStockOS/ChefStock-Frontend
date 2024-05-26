@@ -49,9 +49,6 @@ export default {
 </template>
 
 <style>
-.productspage-container{
-  background: #3a3a39;
-}
 .button-container {
   padding-top:20px;
   display: flex;
@@ -60,7 +57,7 @@ export default {
 }
 
 .add-button {
-  background-color: #808080;
+  background-color: #ff8a48;
   color: #ffffff;
   padding: 10px 20px;
   font-size: 16px;
@@ -71,6 +68,6 @@ export default {
 }
 
 .add-button:hover {
-  background-color: #a0a0a0;
+  background-color: #ff5800;
 }
 </style>

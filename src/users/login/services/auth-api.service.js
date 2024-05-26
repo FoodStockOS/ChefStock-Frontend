@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/users';
+const API_URL = 'https://my-json-server.typicode.com/drkdevv1/json-server-Chefstock/users';
 
 class AuthService {
     async login(username, password) {

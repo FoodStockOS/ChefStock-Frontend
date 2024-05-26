@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Sign Up</h1>
+    <h1 class="login-signup-title">Welcome to ChefStock!</h1>
     <signup-form-component />
   </div>
 </template>
