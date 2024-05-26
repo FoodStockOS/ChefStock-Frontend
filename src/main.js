@@ -1,8 +1,6 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
-import './styles.css'
 
 import i18n from "./i18n.js"
 
@@ -58,6 +56,31 @@ import 'primeicons/primeicons.css';
 //PrimeFlex Companion
 import "primeflex/primeflex.css";
 
+import ProductsPage from "@/users/products/pages/ProductsPage.vue";
+import productsCreateFormComponent from "@/users/products/components/products-create-form.component.vue";
+import LoginPage from "@/users/login/pages/LoginPage.vue";
+import SignupPage from "@/users/login/pages/SignupPage.vue";
+import HomePage from "@/users/homepage/pages/HomePage.vue";
+import productsUpdateComponent from "@/users/products/components/products-update.component.vue";
+import profileComponent from "@/users/profile/components/profile.component.vue";
+import ProfileComponent from "@/users/profile/components/profile.component.vue";
+
+const routes = [
+    { path: '/homepage', component: HomePage},
+    { path: '/', component: HomePage },
+    { path: '/products', component: ProductsPage},
+    { path: '/createproducts', component: productsCreateFormComponent},
+    { path: '/updateproducts/:id', name: 'ProductUpdate', component: productsUpdateComponent},
+    { path: '/login', component: LoginPage},
+    { path: '/signup', component: SignupPage},
+    { path: '/profile', component: ProfileComponent}
+]
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+})
+
 createApp(App)
     .use(PrimeVue, {ripple:true})
     .component("pv-menu", Menu)
@@ -98,5 +121,6 @@ createApp(App)
     .component("pv-inplace", Inplace)
     .component("pv-cascade", CascadeSelect)
     .component("pv-confirm-dialog", ConfirmDialog)
+    .use(router)
     .use(i18n)
     .mount('#app')
