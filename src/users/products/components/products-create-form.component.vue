@@ -10,11 +10,19 @@ export default {
       name: '',
       quantity: '',
       category: '',
-      description: ''
+      description: '',
+      image: ''
     });
-
+    const handleFileUpload = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        product.value.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    };
     const submitForm = () => {
-      axios.post('http://localhost:3000/products', product.value)
+      axios.post('https://my-json-server.typicode.com/drkdevv1/json-server-Chefstock/products', product.value)
           .then(response => {
             console.log('Producto creado:', response.data);
             router.push('/products');
@@ -26,7 +34,8 @@ export default {
 
     return {
       product,
-      submitForm
+      submitForm,
+      handleFileUpload
     };
   }
 };
@@ -37,7 +46,7 @@ export default {
   <div class="form-container">
     <form @submit.prevent="submitForm" class="product-form">
       <div class="form-group left-column">
-        <label for="name">Nombre</label>
+        <label for="name">Nombre del producto</label>
         <input type="text" id="name" v-model="product.name" required>
 
         <label for="quantity">Cantidad</label>
@@ -50,10 +59,11 @@ export default {
       <div class="form-group right-column">
         <label for="description">Agregar una descripción</label>
         <textarea id="description" v-model="product.description" required></textarea>
+        <input type="file" id="image" @change="handleFileUpload" required>
         <div class="button-container">
-          <pv-button type="submit" class="save-button">Save</pv-button>
-          <router-link to="/products">
-            <pv-button class="cancel-button">Cancel</pv-button>
+          <pv-button type="submit" class="save-button">Guardar</pv-button>
+          <router-link to="/products" class="link-no-decoration">
+            <pv-button class="cancel-button">Cancelar</pv-button>
           </router-link>
         </div>
       </div>
@@ -68,13 +78,19 @@ export default {
   padding: 20px;
   margin: 0 auto;
 }
+#description {
+  resize: none;
+}
+.link-no-decoration {
+  text-decoration: none;
+}
 
 .product-form {
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 20px;
   border-radius: 20px;
-  background-color: #f9f9f9;
+  background-color: #ffff;
   padding: 20px;
 }
 
@@ -136,16 +152,16 @@ textarea {
 }
 @media (max-width: 768px) {
   .product-form {
-    grid-template-columns: 2fr; /* Cambia a una sola columna en dispositivos móviles */
+    grid-template-columns: 2fr;
   }
 
   .left-column, .right-column {
-    grid-column: auto; /* Reinicia el valor de grid-column */
-    padding: 0; /* Elimina el relleno */
+    grid-column: auto;
+    padding: 0;
   }
 
   .right-column {
-    margin-top: 20px; /* Añade un margen superior para separar los elementos */
+    margin-top: 20px;
   }
 }
 </style>

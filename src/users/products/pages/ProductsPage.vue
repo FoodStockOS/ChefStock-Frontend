@@ -16,10 +16,13 @@ export default {
       productsApi: new ProductsApiService(),
     };
   },
-  created() {
-    this.getProductCard();
-  },
   methods:{
+    handleProductDeleted(productId) {
+      const index = this.products.findIndex(product => product.id === productId);
+      if (index !== -1) {
+        this.products.splice(index, 1);
+      }
+    },
     getProductCard(){
       this.productsApi.getCardInfo().then((response)=>{
         this.products=response.data;
@@ -28,27 +31,33 @@ export default {
       });
     },
   },
+  created() {
+    this.getProductCard();
+  },
 };
 </script>
 
 <template>
-  <div class="button-container">
-    <router-link to="/createproducts">
-      <pv-button class="add-button">Add Products</pv-button>
-    </router-link>
+  <div class="productspage-container">
+    <div class="button-container">
+      <router-link to="/createproducts">
+        <pv-button class="add-button">Agregar Productos</pv-button>
+      </router-link>
+    </div>
+    <product-card-list :products="products" @productDeleted="handleProductDeleted"></product-card-list>
   </div>
-  <product-card-list :products="products"></product-card-list>
 </template>
 
 <style>
 .button-container {
+  padding-top:20px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
 .add-button {
-  background-color: #808080;
+  background-color: #ff8a48;
   color: #ffffff;
   padding: 10px 20px;
   font-size: 16px;
@@ -59,6 +68,6 @@ export default {
 }
 
 .add-button:hover {
-  background-color: #a0a0a0;
+  background-color: #ff5800;
 }
 </style>
