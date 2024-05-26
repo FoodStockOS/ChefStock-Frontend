@@ -1,11 +1,32 @@
 <script>
-import{ Products } from "@/users/products/models/products.entity.js";
+import {Products} from "@/users/products/models/products.entity.js";
+import {ProductsApiService} from "@/users/products/services/products-api.service.js";
+
 export default {
   name:"ProductCard",
   components: {},
   props: {
-    product: Products,
+    product: {
+      type: Object,
+      required: true
+    },
   },
+  methods: {
+    deleteProduct() {
+      const productService = new ProductsApiService();
+      productService.deleteProduct(this.product.id)
+          .then(() => {
+            this.$emit('productDeleted', this.product.id);
+            console.log("Producto eliminado con éxito");
+          })
+          .catch(error => {
+            console.error("Error al eliminar el producto:", error);
+          });
+    },
+    editProduct() {
+      this.$router.push({ name: 'ProductUpdate', params: { id: this.product.id } });
+    }
+  }
 };
 
 </script>
@@ -20,8 +41,8 @@ export default {
       <p><strong>Categoría:</strong> {{ product.category }}</p>
       <p><strong>Descripción:</strong> {{ product.description }}</p>
       <div class="buttons-container">
-        <pv-button class="edit-button">Edit</pv-button>
-        <pv-button class="delete-button">Delete</pv-button>
+        <pv-button class="edit-button">Editar</pv-button>
+        <pv-button class="delete-button" @click="deleteProduct">Eliminar</pv-button>
       </div>
     </template>
   </pv-card>
@@ -42,7 +63,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
+  min-height: 250px;
 }
 
 .product-image {

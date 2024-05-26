@@ -3,15 +3,23 @@ import ProductCard from './products-card.component.vue'
 export default {
   name: "ProductCardList",
   components:{ProductCard},
-  props:{
-    products: Object,
+  props: {
+    products: Array,
+  },
+  methods: {
+    handleProductDeleted(productId) {
+      const index = this.products.findIndex(product => product.id === productId);
+      if (index !== -1) {
+        this.products.splice(index, 1);
+      }
+    },
   }
 }
 </script>
 
 <template>
   <div class="products-list">
-    <product-card v-for="product in products" :product="product" :key="product.id"></product-card>
+    <product-card v-for="product in products" :product="product" :key="product.id" @productDeleted="handleProductDeleted"></product-card>
   </div>
 </template>
 
