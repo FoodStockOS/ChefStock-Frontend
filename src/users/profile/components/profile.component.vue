@@ -50,34 +50,28 @@ export default {
 
 
 .user-profile{
-  /*border: 2px solid black;*/
   max-width: 800px;
   margin: auto;
+  background-color:#ffff;
+  border-radius:10px;
   border: solid 1px #ccc;
   padding: 20px;
   justify-content: center;
-  height: 100%
+  height: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
 .box{
-  /*border:1px solid red;*/
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin:1rem;
   width: 100%;
-
-
   align-items: stretch;
   height: 30vh;
 
 
 }
 .box3{
-  //border:2px solid blue;
   height: 35vh;
   display: flex;
   align-items: center;
@@ -109,13 +103,13 @@ export default {
 }
 
 .navigation button {
-  background-color: #ffa500; /* Naranja para botones de navegación */
+  background-color: #ffa500;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 4px;
 }
 
 .navigation button:hover {
-  background-color: #ff9100; /* Naranja oscuro al pasar el mouse */
+  background-color: #ff9100;
 }
 </style>

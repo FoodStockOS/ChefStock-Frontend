@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="homepage-products">
     <md-card>
       <md-card-media>
         <img src="../assets/Producto1.png" alt="" height="315" width="315">
@@ -38,8 +38,8 @@ export default {
 
 </template>
 
-<style>
 
+<style>
 md-card {
   color: black;
   width: 320px;
@@ -48,7 +48,13 @@ md-card {
   vertical-align: top;
   text-align: center;
   border: 3px solid;
-  background: #e55e35;
+  background: #ff8a48;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+.homepage-products img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 </style>
