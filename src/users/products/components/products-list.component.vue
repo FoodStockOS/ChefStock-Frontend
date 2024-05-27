@@ -12,14 +12,20 @@ export default {
       if (index !== -1) {
         this.products.splice(index, 1);
       }
-    },
+    }
   }
 }
 </script>
 
 <template>
   <div class="products-list">
-    <product-card v-for="product in products" :product="product" :key="product.id" @productDeleted="handleProductDeleted"></product-card>
+    <product-card
+        v-for="product in products"
+        :product="product"
+        :key="product.id"
+        @productDeleted="handleProductDeleted"
+        @update="productId => $router.push({ name: 'ProductUpdate', params: { productId } })"
+    ></product-card>
   </div>
 </template>
 

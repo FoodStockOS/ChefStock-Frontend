@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 
+
 import i18n from "./i18n.js"
 
 import PrimeVue from "primevue/config";
@@ -17,10 +18,10 @@ import Textarea from "primevue/textarea";
 import Steps from "primevue/steps";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import FileUpload from "primevue/fileupload";
 import Button from "primevue/button";
 import Toolbar from "primevue/toolbar";
 import InputText from "primevue/inputtext";
+import InputNumber from 'primevue/inputnumber';
 import Sidebar from "primevue/sidebar";
 import Row from "primevue/row";
 import Dialog from "primevue/dialog";
@@ -46,11 +47,14 @@ import AvatarGroup from 'primevue/avatargroup';
 import Inplace from 'primevue/inplace';
 import CascadeSelect from 'primevue/cascadeselect';
 import ConfirmDialog from 'primevue/confirmdialog';
+import FileUpload from 'primevue/fileupload';
+
 import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from "primevue/toastservice";
 
 //PrimeVue Styles
-import "primevue/resources/themes/md-light-indigo/theme.css";
+import "primevue/resources/themes/aura-light-amber/theme.css";
+//import "primevue/resources/themes/md-light-indigo/theme.css";
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 //PrimeFlex Companion
@@ -61,8 +65,7 @@ import productsCreateFormComponent from "@/users/products/components/products-cr
 import LoginPage from "@/users/login/pages/LoginPage.vue";
 import SignupPage from "@/users/login/pages/SignupPage.vue";
 import HomePage from "@/users/homepage/pages/HomePage.vue";
-import productsUpdateComponent from "@/users/products/components/products-update.component.vue";
-import profileComponent from "@/users/profile/components/profile.component.vue";
+import ProductsUpdateForm from "@/users/products/components/products-update-form.component.vue";
 import ProfileComponent from "@/users/profile/components/profile.component.vue";
 
 const routes = [
@@ -70,7 +73,7 @@ const routes = [
     { path: '/', component: HomePage },
     { path: '/products', component: ProductsPage},
     { path: '/createproducts', component: productsCreateFormComponent},
-    { path: '/updateproducts/:id', name: 'ProductUpdate', component: productsUpdateComponent},
+    { path: '/products/update/:productId', name: 'ProductUpdate', component: ProductsUpdateForm },
     { path: '/login', component: LoginPage},
     { path: '/signup', component: SignupPage},
     { path: '/profile', component: ProfileComponent}
@@ -98,10 +101,10 @@ createApp(App)
     .component("pv-button", Button)
     .component("pv-toolbar", Toolbar)
     .component("pv-input-text", InputText)
+    .component("pv-input-number", InputNumber)
     .component("pv-sidebar", Sidebar)
     .component("pv-row", Row)
     .component("pv-dialog", Dialog)
-    .component("pv-toast", Toast)
     .component("pv-dropdown", Dropdown)
     .component("pv-tag", Tag)
     .component("pv-card", Card)
@@ -121,6 +124,9 @@ createApp(App)
     .component("pv-inplace", Inplace)
     .component("pv-cascade", CascadeSelect)
     .component("pv-confirm-dialog", ConfirmDialog)
+    .component("pv-file-upload", FileUpload)
+    .component("pv-toast", Toast)
+    .use(ToastService)
     .use(router)
     .use(i18n)
     .mount('#app')
