@@ -36,6 +36,7 @@ export default {
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 0.5rem 1rem;
+  border:none;
 }
 .text-button {
   color: #1c1c1c;
@@ -44,6 +45,7 @@ export default {
   font-size: 1.5rem;
   cursor: pointer;
   margin-right: 10px;
+  border:none;
   transition: background-color 0.3s ease;
 }
 .right-button {

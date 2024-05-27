@@ -1,5 +1,5 @@
 export class Products {
-    constructor(id='', name = '', quantity = '', category = '', description = '', image = '') {
+    constructor(id='', name = '', quantity = 0, category = '', description = '', image = '') {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
