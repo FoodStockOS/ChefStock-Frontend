@@ -10,11 +10,12 @@ export class ProductsApiService {
     getCardInfo() {
         return http.get(`/products`);
     }
-
-    updateProduct(id, productData) {
-        return http.put(`/products/${id}`, productData);
+    createProduct(product) {
+        return http.post(`/products`, product);
     }
-
+    updateProduct(product) {
+        return http.put(`/products/${product.id}`, product);
+    }
     deleteProduct(id) {
         return http.delete(`/products/${id}`);
     }
