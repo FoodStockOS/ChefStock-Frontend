@@ -1,14 +1,15 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import axios from 'axios';
+import {ProductsApiService} from "@/users/products/services/products-api.service.js";
 
 export default {
   setup() {
     const router = useRouter();
+    const productService = new ProductsApiService();
     const product = ref({
       name: '',
-      quantity: '',
+      quantity: 0,
       category: '',
       description: '',
       image: ''
@@ -22,7 +23,7 @@ export default {
       reader.readAsDataURL(file);
     };
     const submitForm = () => {
-      axios.post('https://my-json-server.typicode.com/drkdevv1/json-server-Chefstock/products', product.value)
+      productService.createProduct(product.value)
           .then(response => {
             console.log('Producto creado:', response.data);
             router.push('/products');
@@ -43,40 +44,63 @@ export default {
 </script>
 
 <template>
-  <div class="form-container">
-    <form @submit.prevent="submitForm" class="product-form">
-      <div class="form-group left-column">
-        <label for="name">Nombre del producto</label>
-        <input type="text" id="name" v-model="product.name" required>
+  <pv-card class="form-card">
+    <template #title>
+      <h1>Crear Producto</h1>
+    </template>
+    <template #content>
+      <div class="form-container">
+        <form @submit.prevent="submitForm" class="product-form">
 
-        <label for="quantity">Cantidad</label>
-        <input type="number" id="quantity" v-model="product.quantity" required>
+          <div class="form-group left-column">
+            <label for="name">Nombre del producto</label>
+            <pv-input-text id="name" v-model.lazy="product.name" type="text" required ></pv-input-text>
 
-        <label for="category">Categoría</label>
-        <input type="text" id="category" v-model="product.category" required>
+
+            <label for="quantity">Cantidad</label>
+            <pv-input-number id="quantity" v-model.lazy="product.quantity" inputId="minmax-buttons" mode="decimal" showButtons :min="0" :max="100" required/>
+
+            <label for="category">Categoría</label>
+            <pv-input-text id="category" v-model.lazy="product.category" type="text" required ></pv-input-text>
+          </div>
+
+          <div class="form-group right-column">
+            <label for="description">Agregar una descripción</label>
+            <pv-text-area id="description" v-model.lazy="product.description" required rows="5" cols="30" />
+
+            <input type="file" id="image" @change="handleFileUpload" required>
+            <div class="button-container">
+              <pv-button type="submit" class="save-button">Guardar</pv-button>
+              <router-link to="/products" class="link-no-decoration">
+                <pv-button class="cancel-button">Cancelar</pv-button>
+              </router-link>
+            </div>
+          </div>
+        </form>
       </div>
+    </template>
+  </pv-card>
 
-      <div class="form-group right-column">
-        <label for="description">Agregar una descripción</label>
-        <textarea id="description" v-model="product.description" required></textarea>
-        <input type="file" id="image" @change="handleFileUpload" required>
-        <div class="button-container">
-          <pv-button type="submit" class="save-button">Guardar</pv-button>
-          <router-link to="/products" class="link-no-decoration">
-            <pv-button class="cancel-button">Cancelar</pv-button>
-          </router-link>
-        </div>
-      </div>
-    </form>
-  </div>
+
 </template>
 
-<style scoped>
+<style>
+.form-card{
+  background-color: unset;
+  border: unset;
+  box-shadow:none;
+  text-align:center;
+}
+.form-card h1{
+  color: #32383e;
+  font-size:2.1rem;
+}
 .form-container {
   display: flex;
   justify-content: center;
   padding: 20px;
   margin: 0 auto;
+
 }
 #description {
   resize: none;
@@ -92,6 +116,7 @@ export default {
   border-radius: 20px;
   background-color: #ffff;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .left-column {
@@ -127,12 +152,12 @@ textarea {
   margin-top: 10px;
   max-width: 100px;
   padding: 10px 10px;
-  background-color: #007bff;
+  background-color: #006eff;
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
 }
 .cancel-button {
   text-decoration: none;
@@ -148,7 +173,10 @@ textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
+}
+.cancel-button:hover {
+  background-color: #c20a0a;
 }
 @media (max-width: 768px) {
   .product-form {
