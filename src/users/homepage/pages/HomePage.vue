@@ -15,7 +15,7 @@ export default {
 
   <div class="principal">
     <h1>ChefStock</h1>
-    <img alt="" src="../assets/ImagenPrincipal.jpg" height="400" width="625"/>
+    <img alt="" src="../assets/ImagenPrincipal.jpg" width="625"/>
   </div>
   &nbsp;
   <div class="productos">
@@ -27,14 +27,15 @@ export default {
 </template>
 
 <style>
+.principal img {
+  max-width:100%;
+  height:auto;
+  border-radius: 15px;
+}
 .principal{
   text-align: center;
 }
 .productos{
   text-align: center;
-  background: #3a3a39;
-}
-.productos h2{
-  color:#fff;
 }
 </style>

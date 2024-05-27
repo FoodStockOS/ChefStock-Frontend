@@ -8,9 +8,9 @@
       <router-link to="/products"><pv-button class="text-button" >Products</pv-button></router-link>
     </template>
     <template #end>
-      <router-link to="/login"><pv-button class="text-button login-button" >Log In</pv-button></router-link>
-      <router-link to="/signup"><pv-button class="text-button signup-button" >Sign Up</pv-button></router-link>
-      <router-link to="/profile"><pv-button class="text-button profile-button" >Profile</pv-button></router-link>
+      <router-link to="/login"><pv-button class="right-button" >Log In</pv-button></router-link>
+      <router-link to="/signup"><pv-button class="right-button" >Sign Up</pv-button></router-link>
+      <router-link to="/profile"><pv-button class="right-button" >Profile</pv-button></router-link>
 
     </template>
   </pv-toolbar>
@@ -31,11 +31,12 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #e55e35;
-  color: #1c1c1c;
+  background-color: #fff7f3;
+  color: #f18244;
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 0.5rem 1rem;
+  border:none;
 }
 .text-button {
   color: #1c1c1c;
@@ -44,28 +45,26 @@ export default {
   font-size: 1.5rem;
   cursor: pointer;
   margin-right: 10px;
+  border:none;
   transition: background-color 0.3s ease;
 }
-.login-button {
-  background-color: #708090;
-  color: #FFF;
-}
-.profile-button {
-  background-color: #708090;
-  color: #FFF;
-}
-.signup-button {
-  background-color: #778899;
+.right-button {
+  margin-right: 10px;
+  background-color: #ff8a48;
   color: #FFF;
 }
 .text-button:hover {
-  background-color: #000;
+  color:#ff8a48;
+}
+.right-button:hover {
+  margin-right: 10px;
+  background-color: #ff5800;
   color: #FFF;
 }
 .content{
   margin-bottom: 200px;
 }
 :root {
-  background-color: #f4f0df;
+  background-color: #fff7f3;
 }
 </style>

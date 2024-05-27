@@ -22,8 +22,8 @@ export default {
             console.error("Error al eliminar el producto:", error);
           });
     },
-    editProduct() {
-      this.$router.push({ name: 'ProductUpdate', params: { id: this.product.id } });
+    updateProduct() {
+      this.$emit('update', this.product.id);
     }
   }
 };
@@ -40,7 +40,7 @@ export default {
       <p><strong>Categoría:</strong> {{ product.category }}</p>
       <p><strong>Descripción:</strong> {{ product.description }}</p>
       <div class="buttons-container">
-        <pv-button class="edit-button">Editar</pv-button>
+        <pv-button class="update-button" @click="updateProduct">Actualizar</pv-button>
         <pv-button class="delete-button" @click="deleteProduct">Eliminar</pv-button>
       </div>
     </template>
@@ -74,7 +74,7 @@ export default {
   justify-content: space-between;
   margin-top: 10px;
 }
-.buttons-container .edit-button{
+.buttons-container .update-button{
   background-color: #f19b08;
   padding: 5px 10px;
   font-size: 14px;
