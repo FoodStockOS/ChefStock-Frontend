@@ -17,6 +17,7 @@ export default {
       stock: 0,
       description: '',
       image: '',
+      dueDate: new Date().toISOString(),
       categoryId: 1
     });
     const categoryOptions = Object.entries(ECategory).map(([value, name]) => ({ value, name }));
@@ -30,6 +31,7 @@ export default {
       reader.readAsDataURL(file);
     };
     const submitForm = () => {
+      product.value.dueDate = new Date(product.value.dueDate).toISOString();
       productService.createProduct(product.value)
           .then(response => {
             console.log('Producto creado:', response.data);

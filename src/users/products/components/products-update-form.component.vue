@@ -13,16 +13,22 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const product = ref(null);
+    const product = ref({
+      name: '',
+      stock: 0,
+      description: '',
+      image: '',
+      dueDate: new Date().toISOString(),
+      categoryId: 1
+    });
     const productService = new ProductsApiService();
     const categoryOptions = Object.entries(ECategory).map(([value, name]) => ({ value: Number(value), name }));
     onMounted(async () => {
       const response = await productService.getProductById(route.params.productId);
       product.value = response.data;
-      console.log('product.categoryId:', product.value.categoryId);
-      console.log('categoryOptions:', categoryOptions);
     });
     const updateProduct = () => {
+      product.value.dueDate = new Date(product.value.dueDate).toISOString();
       productService.updateProduct(product.value)
           .then(() => {
             console.log('Producto actualizado');
