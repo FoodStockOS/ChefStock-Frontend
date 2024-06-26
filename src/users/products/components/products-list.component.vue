@@ -8,7 +8,7 @@ export default {
   },
   methods: {
     handleProductDeleted(productId) {
-      const index = this.products.findIndex(product => product.id === productId);
+      const index = this.products.findIndex(product => product.productId === productId);
       if (index !== -1) {
         this.products.splice(index, 1);
       }
@@ -22,7 +22,7 @@ export default {
     <product-card
         v-for="product in products"
         :product="product"
-        :key="product.id"
+        :key="product.productId"
         @productDeleted="handleProductDeleted"
         @update="productId => $router.push({ name: 'ProductUpdate', params: { productId } })"
     ></product-card>

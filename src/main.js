@@ -8,8 +8,7 @@ import i18n from "./i18n.js"
 import PrimeVue from "primevue/config";
 import 'primeflex/primeflex.css';
 
-import SpeedDial from "primevue/speeddial";
-import Tooltip from "primevue/tooltip";
+import SpeedDial from "primevue/speeddial"
 import Badge from "primevue/badge";
 import Panel from "primevue/panel";
 import MultiSelect from "primevue/multiselect";
@@ -22,7 +21,6 @@ import Button from "primevue/button";
 import Toolbar from "primevue/toolbar";
 import InputText from "primevue/inputtext";
 import InputNumber from 'primevue/inputnumber';
-import Sidebar from "primevue/sidebar";
 import Row from "primevue/row";
 import Dialog from "primevue/dialog";
 import Toast from "primevue/toast";
@@ -35,21 +33,18 @@ import Rating from "primevue/rating";
 import Password from "primevue/password";
 import Divider from "primevue/divider";
 import InputMask from "primevue/inputmask";
-import Calendar from "primevue/calendar";
 import AutoComplete from "primevue/autocomplete";
-import DataViewLayoutOptions from "primevue/dataviewlayoutoptions";
 import Checkbox from "primevue/checkbox";
 import Chip from "primevue/chip";
 import Menu from "primevue/menu";
 import SplitButton from "primevue/splitbutton";
 import Avatar from 'primevue/avatar';
 import AvatarGroup from 'primevue/avatargroup';
-import Inplace from 'primevue/inplace';
 import CascadeSelect from 'primevue/cascadeselect';
 import ConfirmDialog from 'primevue/confirmdialog';
 import FileUpload from 'primevue/fileupload';
 
-import ConfirmationService from 'primevue/confirmationservice';
+//import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from "primevue/toastservice";
 
 //PrimeVue Styles
@@ -67,6 +62,7 @@ import SignupPage from "@/users/login/pages/SignupPage.vue";
 import HomePage from "@/users/homepage/pages/HomePage.vue";
 import ProductsUpdateForm from "@/users/products/components/products-update-form.component.vue";
 import ProfileComponent from "@/users/profile/components/profile.component.vue";
+import Inplace from "primevue/inplace";
 
 const routes = [
     { path: '/homepage', component: HomePage},
@@ -102,7 +98,6 @@ createApp(App)
     .component("pv-toolbar", Toolbar)
     .component("pv-input-text", InputText)
     .component("pv-input-number", InputNumber)
-    .component("pv-sidebar", Sidebar)
     .component("pv-row", Row)
     .component("pv-dialog", Dialog)
     .component("pv-dropdown", Dropdown)
@@ -114,11 +109,9 @@ createApp(App)
     .component("pv-password", Password)
     .component("pv-divider", Divider)
     .component("pv-input-mask", InputMask)
-    .component("pv-calendar", Calendar)
     .component("pv-autocomplete", AutoComplete)
     .component("pv-chip", Chip)
     .component("pv-upload", FileUpload)
-    .component("pv-data-view-layout-options", DataViewLayoutOptions)
     .component("pv-avatar", Avatar)
     .component("pv-avatar-group", AvatarGroup)
     .component("pv-inplace", Inplace)

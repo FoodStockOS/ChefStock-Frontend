@@ -1,9 +1,15 @@
 <script>
 import {Products} from "@/users/products/models/products.entity.js";
 import {ProductsApiService} from "@/users/products/services/products-api.service.js";
+import {ECategory} from "@/users/products/models/ECategory.enum.js";
 
 export default {
   name:"ProductCard",
+  computed: {
+    ECategory() {
+      return ECategory
+    }
+  },
   components: {},
   props: {
     product: {
@@ -14,9 +20,9 @@ export default {
   methods: {
     deleteProduct() {
       const productService = new ProductsApiService();
-      productService.deleteProduct(this.product.id)
+      productService.deleteProduct(this.product.productId)
           .then(() => {
-            this.$emit('productDeleted', this.product.id);
+            this.$emit('productDeleted', this.product.productId);
             console.log("Producto eliminado con éxito");
           })
           .catch(error => {
@@ -24,7 +30,7 @@ export default {
           });
     },
     updateProduct() {
-      this.$emit('update', this.product.id);
+      this.$emit('update', this.product.productId);
     }
   }
 };
@@ -37,8 +43,8 @@ export default {
       <div class="image-container">
         <img :src="product.image" alt="Product" class="product-image"/>
       </div>
-      <p><strong>Cantidad:</strong> {{ product.quantity }}</p>
-      <p><strong>Categoría:</strong> {{ product.category }}</p>
+      <p><strong>Cantidad:</strong> {{ product.stock }}</p>
+      <p><strong>Categoría:</strong> {{ ECategory[product.categoryId] }}</p>
       <p><strong>Descripción:</strong> {{ product.description }}</p>
       <div class="buttons-container">
         <pv-button class="update-button" @click="updateProduct">Actualizar</pv-button>

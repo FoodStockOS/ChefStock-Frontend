@@ -2,20 +2,26 @@
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { ProductsApiService } from '@/users/products/services/products-api.service.js';
+import {ECategory} from "@/users/products/models/ECategory.enum.js";
 
 export default {
+  computed: {
+    ECategory() {
+      return ECategory
+    }
+  },
   setup() {
     const router = useRouter();
     const route = useRoute();
     const product = ref(null);
     const productService = new ProductsApiService();
-
+    const categoryOptions = Object.entries(ECategory).map(([value, name]) => ({ value: Number(value), name }));
     onMounted(async () => {
-      const response = await productService.getCardInfo(route.params.productId);
-      product.value = response.data.find(p => p.id === route.params.productId);
-      console.log(product.value);
+      const response = await productService.getProductById(route.params.productId);
+      product.value = response.data;
+      console.log('product.categoryId:', product.value.categoryId);
+      console.log('categoryOptions:', categoryOptions);
     });
-
     const updateProduct = () => {
       productService.updateProduct(product.value)
           .then(() => {
@@ -29,7 +35,8 @@ export default {
 
     return {
       product,
-      updateProduct
+      updateProduct,
+      categoryOptions
     };
   }
 };
@@ -50,12 +57,28 @@ export default {
             </div>
             <div>
               <label for="quantity">Cantidad:</label>
-              <pv-input-number id="quantity" v-model.lazy="product.quantity" inputId="minmax-buttons" mode="decimal" showButtons :min="0" :max="100" required/>
+              <pv-input-number id="stock" v-model.lazy="product.stock" inputId="minmax-buttons" mode="decimal" showButtons :min="0" :max="100" required/>
             </div>
+            <!--
             <div>
               <label for="category">Categoría:</label>
               <pv-input-text id="category" v-model.lazy="product.category" type="text" required ></pv-input-text>
             </div>
+
+
+<select id="category" v-model.lazy="product.categoryId" required>
+              <option v-for="(name, value) in ECategory" :value="value">
+                {{ name }}
+              </option>
+            </select>
+
+            -->
+            <label for="category">Categoría</label>
+
+            <pv-dropdown v-if="categoryOptions" id="category" v-model.lazy="product.categoryId" required
+                         :options="categoryOptions" optionLabel="name"
+                         optionValue="value" placeholder="Select a Category"></pv-dropdown>
+
             <div>
               <label for="description">Descripción:</label>
               <pv-text-area id="description" v-model.lazy="product.description" required rows="5" cols="30" />

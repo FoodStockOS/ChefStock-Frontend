@@ -2,18 +2,25 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import {ProductsApiService} from "@/users/products/services/products-api.service.js";
+import {ECategory} from "@/users/products/models/ECategory.enum.js";
+
+
 
 export default {
+
   setup() {
+
     const router = useRouter();
     const productService = new ProductsApiService();
     const product = ref({
       name: '',
-      quantity: 0,
-      category: '',
+      stock: 0,
       description: '',
-      image: ''
+      image: '',
+      categoryId: 1
     });
+    const categoryOptions = Object.entries(ECategory).map(([value, name]) => ({ value, name }));
+
     const handleFileUpload = (event) => {
       const file = event.target.files[0];
       const reader = new FileReader();
@@ -36,7 +43,9 @@ export default {
     return {
       product,
       submitForm,
-      handleFileUpload
+      handleFileUpload,
+      categoryOptions,
+      ECategory
     };
   }
 };
@@ -58,10 +67,20 @@ export default {
 
 
             <label for="quantity">Cantidad</label>
-            <pv-input-number id="quantity" v-model.lazy="product.quantity" inputId="minmax-buttons" mode="decimal" showButtons :min="0" :max="100" required/>
-
+            <pv-input-number id="quantity" v-model.lazy="product.stock" inputId="minmax-buttons" mode="decimal" showButtons :min="0" :max="100" required/>
+            <!--
             <label for="category">Categoría</label>
             <pv-input-text id="category" v-model.lazy="product.category" type="text" required ></pv-input-text>
+            <select id="category" v-model="product.categoryId" required>
+              <option v-for="(name, value) in ECategory" :value="value">
+                {{ name }}
+              </option>
+            </select>
+            -->
+            <label for="category">Categoría</label>
+            <pv-dropdown id="category" v-model="product.categoryId" :options="categoryOptions" optionLabel="name" optionValue="value" placeholder="Select a Category"></pv-dropdown>
+
+
           </div>
 
           <div class="form-group right-column">
