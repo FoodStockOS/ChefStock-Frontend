@@ -2,7 +2,9 @@ import axios from "axios";
 
 // Create axios instance with predefined properties
 const http = axios.create({
-    baseURL: 'https://localhost:44371',
+    //baseURL: 'https://chefstock-backend.up.railway.app',
+    // baseURL: 'https://localhost:44371',
+    baseURL: 'https://chefstock-platform.azurewebsites.net',
 });
 
 // Define country API service
